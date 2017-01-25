@@ -1,0 +1,51 @@
+<link href="/stylesheets/bootflat.css" rel="stylesheet">
+<link rel="stylesheet" href="/stylesheets/login.css">
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/jquery.fs.selecter.min.js"></script>
+<script src="/javascripts/jquery.fs.stepper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/javascripts/modalHandle.js"></script>
+<link href='/stylesheets/style.css' rel='stylesheet' />
+    <link href='/stylesheets/animations.css' rel='stylesheet' />
+
+<div class="body">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 crit_icon">
+<img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ4Ny40IDQ4Ny40IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0ODcuNCA0ODcuNDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPgo8Zz4KCTxwYXRoIGQ9Ik00NjQsMTI2LjczN2MtMTEuOC00Mi40LTUxLjQtNzMuMi05Ny45LTcxLjNjLTM4LjYsMS42LTcxLjksMjYuNC04Niw2MC43Yy0xMC41LTYuNy0yMy0xMC43LTM2LjQtMTAuNyAgIGMtMTMuNCwwLTI1LjgsMy45LTM2LjMsMTAuNmMtMTQuNS0zNS42LTQ5LjUtNjAuOC05MC4yLTYwLjhjLTQ0LjcsMC04Mi4zLDMwLjItOTMuOCw3MS4zYy0xLjgsNi41LTcuOCwxMC45LTE0LjUsMTAuOUgwdjMwLjVoOC45ICAgYzYuNywwLDEyLjcsNC40LDE0LjUsMTAuOGMxMS44LDQyLjQsNTEuNCw3My4yLDk3LjksNzEuM2M0OC40LTIsODguNC00MC41LDkyLjgtODguNGM0LjYtMTEuOCwxNi4xLTIwLjMsMjkuNi0yMC4zICAgYzEzLjMsMCwyNC43LDguMiwyOS40LDE5LjhjNC4zLDQ5LjgsNDYuMiw4OSw5Ny4xLDg5YzQ0LjcsMCw4Mi4zLTMwLjIsOTMuOC03MS4zYzEuOC02LjUsNy44LTEwLjksMTQuNS0xMC45aDguOXYtMzAuNWgtOC45ICAgQzQ3MS44LDEzNy41MzcsNDY1LjgsMTMzLjEzNyw0NjQsMTI2LjczN3ogTTExNy4yLDIyMC42MzdjLTM3LjQsMC02Ny44LTMwLjQtNjcuOC02Ny44czMwLjQtNjcuOCw2Ny44LTY3LjhzNjcuOCwzMC40LDY3LjgsNjcuOCAgIFMxNTQuNiwyMjAuNjM3LDExNy4yLDIyMC42Mzd6IE0zNzAuMiwyMjAuNjM3Yy0zNy40LDAtNjcuOC0zMC40LTY3LjgtNjcuOHMzMC40LTY3LjgsNjcuOC02Ny44czY3LjgsMzAuNCw2Ny44LDY3LjggICBTNDA3LjYsMjIwLjYzNywzNzAuMiwyMjAuNjM3eiBNNDgyLjUsMzMzLjAzNmMtMTEuOSwzNi42LTQyLjQsOTUuMS0xMTcuMyw5OC45Yy01OS42LDMtMTAwLjYtMjQuMi0xMjEuNS01NC4yICAgYy0yMC45LDMwLTYyLDU3LjItMTIxLjUsNTQuMmMtNzQuOS0zLjgtMTA1LjUtNjIuNC0xMTcuMy05OC45Yy0wLjktMy01LjItMTguMyw3LjgtMTAuMWMxLjQsMS4xLDIuOCwyLjIsNC40LDMuMmwwLDBsMCwwICAgYzcuNyw1LDE4LjEsOSwzMi4xLDkuN2M0MC41LDIsNzYtNjcuNSwxMzIuNy02NC43YzE0LjUsMC43LDM0LjYsNC4yLDYxLjcsMzEuMmMyNy4xLTI3LDQ3LjEtMzAuNSw2MS43LTMxLjIgICBjNTYuNy0yLjgsOTIuMiw2Ni43LDEzMi43LDY0LjdjMTQtMC43LDI0LjQtNC43LDMyLjEtOS43bDAsMGwwLDBjMS42LTEsMy4xLTIuMSw0LjUtMy4yICAgQzQ4Ny43LDMxNC43MzcsNDgzLjUsMzI5LjkzNyw0ODIuNSwzMzMuMDM2eiIgZmlsbD0iI2Y2YmI0MiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" />              
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <h1 class="logo fade_load2">Criteek</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+
+                <div class="form fade_load">
+                    {{#if hasErrors}}
+                    <div class="alert alert-danger">
+                        {{# each messages }}
+                        <p>{{this}}</p>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+
+                    <form action="/user/signup" method="post" class="signup-form">
+                        <input type="text" id="username" placeholder="username" name="username" />
+                        <input type="text" id="password" placeholder="password" name="password" />
+                        <input type="text" id="email" placeholder="email" name="email" />
+                        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                        <input type="submit" value="signup" class="button">
+                        <p class="message">Already registered? <a href="/user/signin">Sign In</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,219 @@
+<div class="row profile_head">
+  
+  <div class="col-xs-4">
+    <h2 class="user_title">{{ username }}'s <span class="studio_title">Studio</span></h2>
+  </div>
+   <div class="col-xs-2 stat">
+    <span><h5>Projects<span class='nums'> {{ projNum }}</span></h5></span>
+    
+  </div>
+
+  <div class="col-xs-2 stat">
+    <span><h5>Criteeks<span class='nums'> {{ criteekNum }}</span></h5></span>
+    
+  </div>
+</div>
+
+<hr class="profile_hr"></hr>
+
+<div class="row">
+  <div class="col-xs-8">
+    {{# each posts }} {{!Iterates through each entry in the "posts" collection }}
+    <div class="row">
+    {{# each this }} {{!Makes a post card using data from the current entry in the "posts" collection }}
+      <div class="col-sm-4 fade_load">
+        <div class="thumbnail clearfix heightSame">
+          <div class="post_hdr">
+            <i class="fa fa-user-circle-o" aria-hidden="true"> <span class="thumbfont">{{this.username}}</span> </i>
+            <span class="glyphicon glyphicon-remove-sign pull-right del_btn" data-toggle="modal" data-target="#delete_conf" data-id="{{this._id}}" role= "button" aria-hidden="true"></span>
+          </div>
+          <hr class="hr_reset"></hr>
+          <a id="openPost" role="button" data-which="openPost" data-toggle="modal" data-target="#postModal" 
+          data-img="{{this.imgPath}}" data-id="{{this._id}}"data-title="{{this.title}}" data-user="{{this.username}}" 
+          data-descript="{{this.description}}" data-question="{{this.question}}" {{#with criteekDet}}
+            data-crituser="{{#each this}}{{user}}:{{/each}}" data-crit="{{#each this}}{{criteek}}:{{/each}}"{{/with}}>
+            
+            <div class ="crop">
+              <img src="{{this.imgPath}}" alt="...">
+            </div>
+          </a>
+          
+          <div class="post_title">
+            <h6 class="thumbfont text-center">{{this.title}}</h6>
+            <hr class="hr_reset"></hr>
+            <div class="row">
+              <div class="col-xs-10 col-xs-offset-1 text-center critAmt">
+                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <span class="amt">{{this.criteekCt}} Criteeks</span>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    {{/each}}
+    </div>
+{{/each}}
+  </div>
+  
+  <div class="col-xs-4">
+    <div class="thumbnail">
+      <h5 class="text-center">Recent Critiques</h5>
+      <hr></hr>
+      {{# each comments }}
+        <div class="row">
+          <div class="col-xs-2 profile_recentImg">
+            <img src="{{ this.path }}">
+          </div>
+          <div class="col-xs-10 profile_recents">
+           <h5> <i class="fa fa-user-circle" aria-hidden="true"></i> {{ this.user }}</h5>
+            <p>{{ this.criteek }}</p>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+
+
+{{! VIEW POST MODAL }}
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content post_mod">
+
+      <div class="modal-body">
+        <div class="row height_chg">
+
+          <div class="col-xs-8 pic height_chg vert">
+            <img src="" alt="...">
+          </div>
+
+          <div class="col-xs-4 details">
+            <div class="hide_over">
+              <button type="button" class="close exit_btn" data-number="1" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>{{! Title }}
+              <div class="row">
+                <div class="col-xs-12 push_right text-center">
+                  <h3 class="modal_title"></h3>
+                  <h6 class="modal_user"></h6>
+                </div>
+              </div>
+              <hr></hr>
+              {{! Start Scroll Area }}
+              <div class="scroll">
+
+                <div class="row">
+                  <div class="col-xs-12">
+                    <p class="modal_descript push_right">
+
+                    </p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12">
+                    <p class="modal_question push_right">
+
+                    </p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <hr class="hr_style"></hr>
+                  <div class="col-xs-12 push_right text-center crit_feed">
+                    <h4>Criteeks</h4>
+                  </div>
+                </div>
+                <hr class="hr_reset"></hr>
+                
+                {{! Start Scroll Area 2}}
+                <div class="row modal_crit">
+
+                  <div class="row crit_post">
+
+                  </div>
+
+                </div>
+              
+              </div>
+            </div>
+            <hr class="hr_style"></hr>
+            
+            
+            <div class="row">
+              <div id="crit_btn" class="col-xs-10 col-xs-offset-1">
+                <button type="button" class="btn btn-info btn-block post_btn shadow " data-toggle="modal" data-id="" href="#critModal">Post Criteek</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+{{! POST CRITIQUE MODAL }}
+<div class="modal hide fade" id="critModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+  
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" data-number="2" aria-label="Close"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+        <h4>Post Criteek</h4>
+      </div>
+      
+      <div class="modal-body">
+      
+        <form action="/" method="post" enctype="multipart/form-data" class="spacing">
+          
+          <div class="form-group">
+            <textarea class="form-control" id="criteek" name="crit"></textarea>
+          </div>
+          
+          <input type="hidden" value="" id="id" name="id">
+          <input type="hidden" value="postcrit" name= "switch">
+          
+          <div class="row pull-right">
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-info block">Post</button>
+              <button type="button" class="btn btn-default block" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </form>
+        
+      </div
+      
+      <div class="modal-footer">
+        <div class="row"><div class="col-xs-12"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{! DELETE POST MODAL }}
+<div class="modal fade" id="delete_conf" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body text-center">
+        <h4 class="modal-title">Delete Post</h4>
+        <hr></hr>
+        <p>Are you sure you want to delete your post?</p>
+      </div>
+      
+      <div class="modal-footer">
+        <form method="post" action="/user/profile">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Never Mind</button>
+          <input type="hidden" id="delete_data" val="" name="delete_data">
+          <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{{ script }}}
